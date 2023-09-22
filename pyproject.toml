@@ -1,0 +1,17 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools", "wheel", "mypy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "source_encrypt"  # as it would appear on PyPI
+version = "0.42"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.900"
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+warn_redundant_casts = true
+warn_unused_ignores = true
