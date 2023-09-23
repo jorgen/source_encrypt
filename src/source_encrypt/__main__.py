@@ -91,8 +91,9 @@ def obfuscate_python_file(source, destination, key):
         source_code = f.read()
     [encrypted, salt_and_iv] = encrypt_aes(source_code, key)
     content = f"""# Generated Python source file
+import os
 import source_encrypt_runtime
-source_encrypt_runtime.decrypt({encrypted}, {salt_and_iv})
+source_encrypt_runtime.decrypt({encrypted}, {salt_and_iv}, __file__, int(os.path.getmtime(__file__)))
     """
     with open(destination, 'wb') as f:
         f.write(content.encode())
